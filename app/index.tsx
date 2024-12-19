@@ -34,7 +34,7 @@ const Page = () => {
           style={styles.textContainer} // Açıklama için arka plan
         >
           <Text style={styles.description}>
-            Türkiye'deki motosiklet kullanıcıları için haberler, eğitimler, sürüş rotaları, yardımlaşma fve daha fazlası! Sende yerini al.
+            Türkiye'deki motosiklet kullanıcıları için haberler, eğitimler, sürüş rotaları, yardımlaşma ve daha fazlası! Sende yerini al.
           </Text>
         </Animatable.View>
       </View>
@@ -103,5 +103,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "white",
     textAlign: "center",
+    fontWeight: "bold",
   },
 });
