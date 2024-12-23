@@ -3,6 +3,9 @@ import React from 'react'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import Header from '@/components/Header';
 import SearchBar from '@/components/SearchBar';
+import BreakingNews from '@/components/BreakingNews';
+
+
 
 const Page = () => {
   const { top: safeTop } = useSafeAreaInsets();  // Güvenli alanın üst boşluğunu alıyoruz
@@ -11,7 +14,7 @@ const Page = () => {
     <View style={[styles.container, { paddingTop: safeTop }]}>
     <Header />
     <SearchBar />
-    
+    <BreakingNews />
     </View>
   )
 }
