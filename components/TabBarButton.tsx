@@ -9,27 +9,31 @@ import Animated, {
 } from "react-native-reanimated";
 import { Colors } from "@/constants/Colors";
 
+// Prop'lar için doğru tipler kullanılıyor
+interface TabBarButtonProps {
+  onPress: () => void; // onPress bir fonksiyon olmalı
+  onLongPress: () => void; // onLongPress bir fonksiyon olmalı
+  isFocused: boolean; // isFocused boolean türünde
+  routeName: string; // routeName bir string olmalı
+  label: string; // label bir string olmalı
+}
+
 const TabBarButton = ({
   onPress,
   onLongPress,
   isFocused,
   routeName,
   label,
-}: {
-  onPress: Function;
-  onLongPress: Function;
-  isFocused: boolean;
-  routeName: string;
-  label: string;
-}) => {
+}: TabBarButtonProps) => {
   const opacity = useSharedValue(0);
 
   useEffect(() => {
-    opacity.value = withSpring(
-      typeof isFocused === "boolean" ? (isFocused ? 1 : 0) : isFocused,
-      { duration: 50 }
-    );
-  }, [opacity, isFocused]);
+    // Animasyonun başlangıcı
+    opacity.value = withSpring(isFocused ? 1 : 0, {
+      damping: 15, // Yumuşaklık
+      stiffness: 100, // Sertlik
+    });
+  }, [isFocused]); // isFocused değiştiğinde animasyonu tetikle
 
   const animatedTextStyle = useAnimatedStyle(() => {
     const opacityValue = interpolate(opacity.value, [0, 1], [1, 0]);
@@ -39,16 +43,25 @@ const TabBarButton = ({
     };
   });
 
+  // `icon[routeName]` öğesinin doğru şekilde render edilmesini sağla
+  const IconComponent = icon[routeName];
+
+  if (!IconComponent) {
+    console.warn(`Icon for route ${routeName} not found.`);
+    return null;
+  }
+
   return (
     <Pressable
       onPress={onPress}
       onLongPress={onLongPress}
       style={styles.tabbarBtn}
     >
-      {icon[routeName]({
-        color: isFocused ? Colors.tabIconSelected : Colors.tabIconDefault,
-        focused: isFocused,
-      })}
+      {/* `IconComponent` doğru bir şekilde kullanıldı */}
+      <IconComponent
+        color={isFocused ? Colors.tabIconSelected : Colors.tabIconDefault}
+        focused={isFocused}
+      />
       <Animated.Text
         style={[
           {

@@ -4,6 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import Header from '@/components/Header';
 import SearchBar from '@/components/SearchBar';
 import BreakingNews from '@/components/BreakingNews';
+import News from '@/components/News';
 
 
 
@@ -15,6 +16,7 @@ const Page = () => {
     <Header />
     <SearchBar />
     <BreakingNews />
+    <News />
     </View>
   )
 }
@@ -24,7 +26,6 @@ export default Page
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //justifyContent: "center",
-    //alignItems: "center",
+
   },
 })
