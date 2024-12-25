@@ -38,9 +38,8 @@ const Page = () => {
           </Text>
         </Animatable.View>
       </View>
-
       {/* Kırmızı buton */}
-      <Animatable.View
+      { <Animatable.View
         animation="fadeInRight"
         duration={1500}
         delay={1000}
@@ -48,7 +47,7 @@ const Page = () => {
         <TouchableOpacity onPress={() => router.replace("/(tabs)")} style={styles.redButton}>
           <Text style={styles.buttonText}>Giriş Yap</Text>
         </TouchableOpacity>
-      </Animatable.View>
+      </Animatable.View>}
 
       <StatusBar style="light" />
     </ImageBackground>

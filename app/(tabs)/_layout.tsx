@@ -8,27 +8,34 @@ const TabLayout = () => {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Home",
+          title: "Haberler",
         }}
       />
       <Tabs.Screen
         name="discover"
         options={{
-          title: "Discover",
+          title: "Rotalar",
         }}
       />
       <Tabs.Screen
         name="saved"
         options={{
-          title: "Saved",
+          title: "Eğitim",
+        }}
+      />
+      <Tabs.Screen
+        name="learn"
+        options={{
+          title: "Sosyal",
         }}
       />
       <Tabs.Screen
         name="settings"
         options={{
-          title: "Settings",
+          title: "Profil",
         }}
       />
+      
     </Tabs>
   );
 };
